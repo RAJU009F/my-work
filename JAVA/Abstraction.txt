@@ -1,0 +1,57 @@
+import java.io.*;
+
+abstract class Bank
+	{
+		abstract int getRateofInterest();
+	
+	}
+class ICICI extends Bank
+	{
+	
+	int getRateofInterest()
+		{
+			return 9;
+		}
+	
+	
+	}
+class HDFC extends Bank
+		{
+		
+		int getRateofInterest()
+		{
+			return 8;
+		}
+		
+		
+		}
+class SBI extends Bank	
+			{
+			
+			int getRateofInterest()
+				{
+				return 7;
+				}
+			
+			}
+class Abstration 
+				{
+				
+				public static void main(String args[])
+					{
+						Bank b = new ICICI();
+						
+						Sysstem.out.println("rate of interest of "+b.getClass().getName()+" is: "+b.getRateofInterest());
+						
+						 b = new HDFC();
+						
+						Sysstem.out.println("rate of interest of "+b.getClass().getName()+" is: "+b.getRateofInterest());
+						 b = new SBI();
+						
+						Sysstem.out.println("rate of interest of "+b.getClass().getName()+" is: "+b.getRateofInterest());
+					
+					}
+				
+				
+				}
+			
