@@ -54,7 +54,7 @@ struct SLL *mergeLists(struct SLL *h1, struct SLL *h2)
 
 		if(!h1)
 			return h2;
-		if(!h2)
+		else if(!h2)
 			return h1;
 		if(h1->data>h2->data)
 		{
@@ -73,19 +73,19 @@ struct SLL *mergeLists(struct SLL *h1, struct SLL *h2)
 }
 
 
-void splitList(struct SLL *source, struct SLL **front, struct SLL **back)
+void splitList(struct SLL **source, struct SLL **front, struct SLL **back)
 {
 	struct SLL *fPtr, *sPtr;
 	
-	if(!source || !source->next)
+	if(!*source || !(*source)->next)
 	{
-			*front = source;
+			*front = *source;
 			*back = NULL;
 		
 	}else
 	{
-		fPtr = source;
-		fPtr = source ->next;
+		fPtr = *source;
+		fPtr = (*source) ->next;
 		while(fPtr)
 		{
 			fPtr = fPtr->next;
@@ -99,10 +99,12 @@ void splitList(struct SLL *source, struct SLL **front, struct SLL **back)
 			
 		}
 		
-		*front = source;
+		
+		*front = *source;
 		*back = sPtr->next;
 		sPtr->next = NULL;
-		
+		printList(*front);
+		printList(*back);
 	}
 	
 	
@@ -115,14 +117,15 @@ void mergeSort(struct SLL **h)
 		if(!*h || !((*h)->next))
 		{	return;}
 		
-		splitList(head, &a, &b);
-		//printList(a);
-		//printList(b);
-		//printList(b);
+		splitList(h, &a, &b);
 		
 		mergeSort(&a);
 		mergeSort(&b);
 		
+		printList(a);
+		printList(b);
+		//printList(b);
+		return;
 		*h= mergeLists(a, b);
 	
 	
@@ -137,13 +140,13 @@ int main()
 		struct SLL *head1 = newNode(11);
 		head1 -> next = newNode(2);
 		head1->next->next = newNode(13);
-		head1->next->next->next = newNode(43);
-		struct SLL *temp=head1->next->next->next->next = newNode(5);
+		/*head1->next->next->next = newNode(43);
+		head1->next->next->next->next = newNode(5);
 		head1->next->next ->next ->next ->next = newNode(62);
 		head1->next->next->next->next->next->next = newNode(7);
 		head1->next->next->next->next->next->next->next = newNode(800);
 		head1->next->next->next->next->next->next->next->next = newNode(9);
-		struct  SLL *last=head1->next->next->next->next->next->next ->next ->next ->next = newNode(10);
+		head1->next->next->next->next->next->next ->next ->next ->next = newNode(10);*/
 		printf("Before|\n");
 		printList(head1);
 		mergeSort(&head1);
