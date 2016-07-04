@@ -1,0 +1,57 @@
+import java.io.Serializable;
+import java.lang.*;
+import java.util.*;
+
+
+//import Employee;
+
+/*
+
+# Author			: @RAJ009F
+# Topic or Type 	: GFG/Matrix
+# Problem Statement	: Maximum sum sub matrix
+# Description		: 
+# Complexity		: 
+=======================
+#sample output
+----------------------
+
+=======================
+*/
+
+class MinCost
+{
+	
+	public static int min(int a,  int b)
+	{
+		
+		return a>b?b:a;
+	}
+	public static int minCost(int arr[][],  int M, int N)
+	{
+		if(M<0 || N<0)
+			return 0;
+		else if(M==0 && N==0)
+			return arr[M][N];
+		else
+			return arr[M][N]+min(minCost(arr, M-1, N), minCost(arr, M, N-1));
+		
+		
+		
+	}
+	
+	public static void main(String args[])
+	{
+		int M,N;
+		int[M][N] arr = { {1, 2, 3},
+                      {4, 8, 2},
+                      {1, 5, 3} };
+		System.out.println(minCost(arr,M-1,N-1));
+		
+		
+		
+	}
+	
+	
+	
+}
