@@ -11,8 +11,11 @@ import java.util.*;
 // #include<limits.h>
 
 // #include<iostream>
+
+
 // #include<algorithm>
 // #include<string>
+// #include<map>
 // #include<vector>
 // using namespace std;
 
@@ -20,7 +23,7 @@ import java.util.*;
 
 # Author			: @RAJ009F
 # Topic or Type 	: GFG/ARRAY
-# Problem Statement	: 
+# Problem Statement	: Product Pair 
 # Description		: 
 # Complexity		: 
 =======================
@@ -30,46 +33,40 @@ import java.util.*;
 =======================
 */
 
-class ZigZag
+class ProductPair
 {
-	public static void zigZag(int arr[],  int n)
+	public static void producPair(int arr[],  int n, int x) 
 	{
-		boolean f = true;
-		for(int i=0; i<n-1 ;i++)
+		HashSet<Integer> set =  new HashSet<Integer>();
+		
+		for(int i=0; i<n; i++)
 		{
-			if(f)
+			if(arr[i] == 0 && x==0)
 			{
-				if(arr[i]>arr[i+1])
-				{
-					arr[i] ^=arr[i+1];
-					arr[i+1] ^=arr[i];
-					arr[i] ^=arr[i+1];
-				}
-			}else
-			{
-				if(arr[i]<arr[i+1])
-				{
-					arr[i] ^=arr[i+1];
-					arr[i+1] ^=arr[i];
-					arr[i] ^=arr[i+1];
-					
-				}
+				System.out.println("x = "+x);
+			return;
+			}
+			if(x%arr[i]==0)
+			{if(set.contains(arr[i]))
+				System.out.println(arr[i]+" * "+x/arr[i]+" = "+x);
+			else
+				set.add(x/arr[i]);
 			}
 			
-			f =!f;
 			
 		}
+		
+		
 		
 	}
 	
 	public static void main(String args[])
 	{
+		int arr[] = {-10, 20, 9, 40};
 		
-		int arr[] = {4, 3, 7, 8, 6, 2, 1};
-		zigZag(arr, arr.length);
+		int x= 800;
+		producPair(arr, arr.length, x);
 		
-		for(int i=0; i<arr.length; i++)
-			System.out.println(arr[i]);
 	}
 	
 	
