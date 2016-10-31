@@ -1,0 +1,124 @@
+import java.lang.*;
+import java.util.*;
+import java.io.*;
+
+// #!/usr/bin/python -O
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #include<stdbool.h>
+// #include<limits.h>
+
+// #include<iostream>
+// #include<algorithm>
+// #include<string>
+// #include<vector>
+// #include<queue>
+// using namespace std;
+
+/*
+
+# Author			: @RAJ009F
+# Topic or Type 	: GFG/BT
+# Problem Statement	:  Print the extreme corner nodes int BT
+# Description		: 
+# Complexity		: 
+=======================
+#steps:
+=----------------
+
+
+#sample output
+----------------------
+
+=======================
+*/
+class Node
+	{
+		int data;
+		Node l;
+		Node r;
+		Node(int data)
+			{
+			
+				this.data = data;
+				this.l  =  this. r = null;
+			}
+	
+	
+	}
+	
+class PrintExtremeCornerNodes
+		{
+			Node root;
+			public void printExtremeNodes(Node node)
+				{
+					if(node == null)
+						return;
+					Queue<Node> q =  new LinkedList<Node>();
+					
+					q. add(node);
+					
+					int leftNode =1;
+					boolean f = true;
+					while(!q.isEmpty())
+					{
+						
+						int n  =  q.size();
+						int size = n;
+						while(n>0)
+						{
+							node =  q.peek();
+							q.poll();
+							
+							if(node.l !=null)
+								q.add(node.l);
+							if(node.r !=null)
+								q.add(node.r);
+								
+							// if(n==1 && (leftNode&1)==1 )
+							if(n==1 && f )
+								System.out.print(node.data+"    ");
+							if(n==size && !f)
+								System.out.print(node.data+" ");
+							
+							n--;
+						}
+						leftNode++;
+						f =!f;
+						
+					}
+					
+				
+				}
+			
+			public static void main(String args[])
+				{
+					
+					PrintExtremeCornerNodes bt =  new PrintExtremeCornerNodes();
+					bt.root = new Node(1);
+					bt.root.l = new Node(2);
+					bt.root.r = new Node(3);
+					bt.root.l.l = new Node(4);
+					bt.root.l.r = new Node(5);
+					bt.root.r.l = new Node(6);
+					bt.root.r.r = new Node(7);
+					
+					
+					bt.root.l.l.l  = new Node(8);
+					bt.root.l.l.r  = new Node(9);
+					bt.root.l.r.l  = new Node(10);
+					bt.root.l.r.r  = new Node(11);
+					bt.root.r.l.l  = new Node(12);
+					bt.root.r.l.r  = new Node(13);
+					bt.root.r.r.l  = new Node(14);
+					bt.root.r.r.r  = new Node(15);
+					
+					bt.printExtremeNodes(bt.root);
+					
+				
+				}
+		
+		
+	}
