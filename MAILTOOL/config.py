@@ -14,8 +14,8 @@ MAIL_BODY_L5 = ""
 MAIL_BODY_L6 = ""
 
 TO_ADDRESS_LIST = "emaillist.txt"
-USER_ID = 'rajuch.07546@gmail.com'
-PASSWORD = 'S9989757344R'
+USER_ID = 'rajuch.MAILID@gmail.com'
+PASSWORD = 'MYPWD'
 MY_COVER_LETTER= "Raju_CoverLetter.docx"
 MY_RESUME = "Raju_Resume.doc"
 
